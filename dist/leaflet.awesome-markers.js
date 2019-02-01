@@ -31,7 +31,8 @@
             extraClasses: '',
             icon: 'home',
             markerColor: 'blue',
-            iconColor: 'white'
+            iconColor: 'white',
+            alarmIcon: ''
         },
 
         initialize: function (options) {
@@ -45,7 +46,9 @@
             if (options.icon) {
                 div.innerHTML = this._createInner();
             }
-
+            if(options.alarmIcon){
+                div.innerHTML+= this._createInnerAlarm();
+            }
             if (options.bgPos) {
                 div.style.backgroundPosition =
                     (-options.bgPos.x) + 'px ' + (-options.bgPos.y) + 'px';
@@ -78,6 +81,19 @@
 
             return "<i " + iconColorStyle + "class='" + options.extraClasses + " " + options.prefix + " " + iconClass + " " + iconSpinClass + " " + iconColorClass + "'></i>";
         },
+        
+        _createInnerAlarm: function(){
+            var options = this.options, iconAlarm,style,iconClass;
+            if(options.alarmIcon.slice(0,options.prefix.length+1) === options.prefix + "-") {
+                iconClass = options.alarmIcon;
+            } else {
+                iconClass = options.prefix + "-" + options.alarmIcon;
+            }
+            style = "style='color: red; top: -8px; left:0; position:absolute;'";
+            console.log(`<i ${style} class="${iconClass}"></i>`);
+            return `<i ${style} class="${options.prefix}  ${iconClass}"></i>`
+
+        },
 
         _setIconStyles: function (img, name) {
             var options = this.options,
@@ -93,8 +109,12 @@
             if (!anchor && size) {
                 anchor = size.divideBy(2, true);
             }
+            if(options.sizeClass){
+                img.className = options.sizeClass + ' ';
+            }
 
-            img.className = 'awesome-marker-' + name + ' ' + options.className;
+            img.className += 'awesome-marker-' + name + ' ' + options.className;
+
 
             if (anchor) {
                 img.style.marginLeft = (-anchor.x) + 'px';
