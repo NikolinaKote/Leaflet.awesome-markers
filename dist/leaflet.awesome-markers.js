@@ -81,7 +81,7 @@
 
             return "<i " + iconColorStyle + "class='" + options.extraClasses + " " + options.prefix + " " + iconClass + " " + iconSpinClass + " " + iconColorClass + "'></i>";
         },
-        
+
         _createInnerAlarm: function(){
             var options = this.options, iconAlarm,style,iconClass;
             if(options.alarmIcon.slice(0,options.prefix.length+1) === options.prefix + "-") {
@@ -90,7 +90,6 @@
                 iconClass = options.prefix + "-" + options.alarmIcon;
             }
             style = "style='color: red; top: -8px; left:0; position:absolute;'";
-            console.log(`<i ${style} class="${iconClass}"></i>`);
             return `<i ${style} class="${options.prefix}  ${iconClass}"></i>`
 
         },
