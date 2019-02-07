@@ -41,6 +41,14 @@ Version: 1.0
   display: inline-block;
   font-size: 14px;
 }
+.awesome-marker span{
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 900;
+  color: white;
+
+}
 
 .awesome-marker .icon-white {
   color: #fff;

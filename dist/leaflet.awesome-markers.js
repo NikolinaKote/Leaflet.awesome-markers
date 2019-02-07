@@ -21,7 +21,7 @@
     L.AwesomeMarkers.Icon = L.Icon.extend({
         options: {
             iconSize: [35, 45],
-            iconAnchor:   [17, 42],
+            iconAnchor: [17, 42],
             popupAnchor: [1, -32],
             shadowAnchor: [10, 12],
             shadowSize: [36, 16],
@@ -32,7 +32,8 @@
             icon: 'home',
             markerColor: 'blue',
             iconColor: 'white',
-            alarmIcon: ''
+            alarmIcon: '',
+            iconType: 'font-awesome'
         },
 
         initialize: function (options) {
@@ -46,8 +47,8 @@
             if (options.icon) {
                 div.innerHTML = this._createInner();
             }
-            if(options.alarmIcon){
-                div.innerHTML+= this._createInnerAlarm();
+            if (options.alarmIcon) {
+                div.innerHTML += this._createInnerAlarm();
             }
             if (options.bgPos) {
                 div.style.backgroundPosition =
@@ -58,21 +59,29 @@
             return div;
         },
 
-        _createInner: function() {
+        _createInner: function () {
+            var options = this.options;
+            if (options.prefix === 'icomoon') {
+                return this._createIcommon();
+            } else {
+                return this._createInnerFontAwesome();
+            }
+        },
+        _createInnerFontAwesome: function () {
             var iconClass, iconSpinClass = "", iconColorClass = "", iconColorStyle = "", options = this.options;
 
-            if(options.icon.slice(0,options.prefix.length+1) === options.prefix + "-") {
+            if (options.icon.slice(0, options.prefix.length + 1) === options.prefix + "-") {
                 iconClass = options.icon;
             } else {
                 iconClass = options.prefix + "-" + options.icon;
             }
 
-            if(options.spin && typeof options.spinClass === "string") {
+            if (options.spin && typeof options.spinClass === "string") {
                 iconSpinClass = options.spinClass;
             }
 
-            if(options.iconColor) {
-                if(options.iconColor === 'white' || options.iconColor === 'black') {
+            if (options.iconColor) {
+                if (options.iconColor === 'white' || options.iconColor === 'black') {
                     iconColorClass = "icon-" + options.iconColor;
                 } else {
                     iconColorStyle = "style='color: " + options.iconColor + "' ";
@@ -81,16 +90,20 @@
 
             return "<i " + iconColorStyle + "class='" + options.extraClasses + " " + options.prefix + " " + iconClass + " " + iconSpinClass + " " + iconColorClass + "'></i>";
         },
+        _createIcommon: function () {
+            var options = this.options;
+            return `<span class="${options.prefix}  ${options.icon}"></span>`;
+        },
 
-        _createInnerAlarm: function(){
-            var options = this.options, iconAlarm,style,iconClass;
-            if(options.alarmIcon.slice(0,options.prefix.length+1) === options.prefix + "-") {
+        _createInnerAlarm: function () {
+            var options = this.options, iconAlarm, style, iconClass;
+            if (options.alarmIcon.slice(0, options.prefix.length + 1) === options.prefix + "-") {
                 iconClass = options.alarmIcon;
             } else {
                 iconClass = options.prefix + "-" + options.alarmIcon;
             }
             style = "style='color: red; top: -8px; left:0; position:absolute;'";
-            return `<i ${style} class="${options.prefix}  ${iconClass}"></i>`
+            return `<i ${style} class="icomoon  ${iconClass}"></i>`
 
         },
 
@@ -108,7 +121,7 @@
             if (!anchor && size) {
                 anchor = size.divideBy(2, true);
             }
-            if(options.sizeClass){
+            if (options.sizeClass) {
                 img.className = options.sizeClass + ' ';
             }
 
@@ -117,11 +130,11 @@
 
             if (anchor) {
                 img.style.marginLeft = (-anchor.x) + 'px';
-                img.style.marginTop  = (-anchor.y) + 'px';
+                img.style.marginTop = (-anchor.y) + 'px';
             }
 
             if (size) {
-                img.style.width  = size.x + 'px';
+                img.style.width = size.x + 'px';
                 img.style.height = size.y + 'px';
             }
         },
@@ -131,14 +144,11 @@
 
             this._setIconStyles(div, 'shadow');
             return div;
-      }
+        }
     });
-        
+
     L.AwesomeMarkers.icon = function (options) {
         return new L.AwesomeMarkers.Icon(options);
     };
 
 }(this, document));
-
-
-
