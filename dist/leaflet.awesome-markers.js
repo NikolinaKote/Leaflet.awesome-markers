@@ -44,8 +44,9 @@
             var div = document.createElement('div'),
                 options = this.options;
 
+
             if (options.icon) {
-                div.innerHTML = this._createInner();
+                div.innerHTML += this._createInner();
             }
             if (options.alarmIcon) {
                 div.innerHTML += this._createInnerAlarm();
@@ -54,6 +55,8 @@
                 div.style.backgroundPosition =
                     (-options.bgPos.x) + 'px ' + (-options.bgPos.y) + 'px';
             }
+
+            div.style.background= `url('data:image/svg+xml;utf8,<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="36px" height="46px" viewBox="0 0 36 46"><g transform="translate(0.000000,46.000000) scale(0.100000,-0.100000)" fill="${options.markerColor}" stroke="none"><path d="M104 401 c-58 -35 -76 -69 -72 -132 3 -45 13 -70 51 -130 25 -41 57 -87 70 -103 l23 -29 51 69 c64 86 103 163 103 200 0 42 -40 104 -80 125 -45 24 -107 24 -146 0z"/></g></svg>') no-repeat -0.5px -2px`;
 
             this._setIconStyles(div, 'icon-' + options.markerColor);
             return div;
@@ -100,10 +103,10 @@
             if (options.alarmIcon.slice(0, options.prefix.length + 1) === options.prefix + "-") {
                 iconClass = options.alarmIcon;
             } else {
-                iconClass = options.prefix + "-" + options.alarmIcon;
+                iconClass = 'fa' + "-" + options.alarmIcon;
             }
             style = "style='color: red; top: -8px; left:0; position:absolute;'";
-            return `<i ${style} class="icomoon  ${iconClass}"></i>`
+            return `<i ${style} class="fa  ${iconClass}"></i>`
 
         },
 
