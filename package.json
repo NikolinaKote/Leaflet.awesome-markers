@@ -1,6 +1,6 @@
 {
   "name": "leaflet.awesome-markers-alarm",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Leaflet awesome marker with icon",
   "main": "leaflet.awesome-markers.js",
   "directories": {
