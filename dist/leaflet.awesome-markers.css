@@ -16,7 +16,7 @@ Version: 1.0
 }
 
 .awesome-marker-shadow {
-    background: url('images/markers-shadow.png') no-repeat 0 0;
+    background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="35px" height="16px" viewBox="0 0 35 16" enable-background="new 0 0 35 16" xml:space="preserve">  <image id="image0" width="35" height="16" x="0" y="0" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAQCAQAAAA2Pg7RAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfjAhIWAh97Qb9NAAABZ0lEQVQ4y63T226jMBSF4S+uSdJJR+3FvP87TiEcjDG9iJNAR+rVLAlkZPbP2mvjw+p/6LBZh3oPm/V+767yuIqyxwRBEEVREBw2uD2mIFtlSZYV4ubF6Ojo5OylosI/jtfqIZklwYisxB3k4s3F2VEjfAOw1iYW2WRCFmWIm6bOfnv34aKpmHsLrLLVLJvNj1zWumvr5uTiwx9vjpoHZFUsFovZi8miWMxmSZJvIceN6eDklzfvXr1ALc9mk2wxGvSuBoPBKCkya9k2FQSNs4uzxmqRZZNikfRGn3pXV6PpOaV156bcwnIQNKJSQTdAq9Pr9AbDox3Kusum1C/fzAZRNukMWm3FDHqTJD1/u7vi4zGbDVqfGrMgGXU6rc7kqjMb5eq6CFvQ002RtIKDySsmY3UzSNssavk3N89sklY2+eukmI3fALvCvbYDz0YUvSjIkll+JPEDZH80b9hY4aU6yH7UbVJfLjvkTBwtSWsAAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDItMThUMjI6MDI6MzErMDM6MDDrmU2QAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTAyLTE4VDIyOjAyOjMxKzAzOjAwmsT1LAAAAABJRU5ErkJggg=="/></svg>') no-repeat 0 0;
     width: 36px;
     height: 16px;
 }
@@ -50,7 +50,14 @@ Version: 1.0
     color: white;
 
 }
+.awesome-marker img {
+    margin-top: 10px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: white;
 
+}
 .awesome-marker .icon-white {
     color: #fff;
 }

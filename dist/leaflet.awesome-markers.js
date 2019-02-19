@@ -65,7 +65,11 @@
             var options = this.options;
             if (options.prefix === 'icomoon') {
                 return this._createIcommon();
-            } else {
+            }
+            else if(options.prefix === 'custom'){
+                return this._createCustomIcon();
+            }
+            else {
                 return this._createInnerFontAwesome();
             }
         },
@@ -108,6 +112,10 @@
             return `<i ${style} class="fa  ${iconClass}"></i>`
 
         },
+        _createCustomIcon: function(){
+            var options = this.options;
+             return `<img src="${options.icon}">`
+          },
 
         _setIconStyles: function (img, name) {
             var options = this.options,
