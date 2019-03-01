@@ -114,7 +114,7 @@
         },
         _createCustomIcon: function(){
             var options = this.options;
-             return `<img src="${options.icon}">`
+             return `<img src='${options.icon}'>`
           },
 
         _setIconStyles: function (img, name) {
