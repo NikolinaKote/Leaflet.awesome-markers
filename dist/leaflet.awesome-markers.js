@@ -33,7 +33,10 @@
             markerColor: 'blue',
             iconColor: 'white',
             alarmIcon: '',
-            iconType: 'font-awesome'
+            iconType: 'font-awesome',
+            hasDiagnosticIcon: false,
+            diagnosticIcon: 'exclamation-triangle',
+            diagnosticColor: 'yellow'
         },
 
         initialize: function (options) {
@@ -50,9 +53,13 @@
             if (options.alarmIcon) {
                 div.innerHTML += this._createInnerAlarm();
             }
+
             if (options.bgPos) {
                 div.style.backgroundPosition =
                     (-options.bgPos.x) + 'px ' + (-options.bgPos.y) + 'px';
+            }
+            if(options.hasDiagnosticIcon){
+                div.innerHTML += this._createDiagnosticIcon();
             }
 
 
@@ -110,6 +117,17 @@
             }
             style = "style='color: red; top: -8px; left:0; position:absolute;'";
             return `<i ${style} class="fa  ${iconClass}"></i>`
+
+        },
+        _createDiagnosticIcon: function(){
+          var options = this.options, diagnosticIconClass, style;
+            if (options.alarmIcon.slice(0, options.prefix.length + 1) === options.prefix + "-") {
+                diagnosticIconClass = options.diagnosticIcon;
+            } else {
+                diagnosticIconClass = 'fa' + "-" + options.diagnosticIcon;
+            }
+            style = `style='color: ${options.diagnosticColor}; top: 18px; left:-2px; position:absolute; text-shadow: 2px 2px 2px black'`;
+            return `<i ${style} class="fa  ${diagnosticIconClass}"></i>`
 
         },
         _createCustomIcon: function(){
