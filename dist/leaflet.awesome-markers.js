@@ -121,7 +121,7 @@
         },
         _createDiagnosticIcon: function(){
           var options = this.options, diagnosticIconClass, style;
-            if (options.alarmIcon.slice(0, options.prefix.length + 1) === options.prefix + "-") {
+            if (options.diagnosticIcon.slice(0, options.prefix.length + 1) === options.prefix + "-") {
                 diagnosticIconClass = options.diagnosticIcon;
             } else {
                 diagnosticIconClass = 'fa' + "-" + options.diagnosticIcon;
