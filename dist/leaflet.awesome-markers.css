@@ -61,3 +61,24 @@ Version: 1.0
 .awesome-marker .icon-white {
     color: #fff;
 }
+
+.awesome-marker p.marker-alarm {
+    position: absolute;
+    top: -5px;
+    right: -7px;
+    margin: auto;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+.awesome-marker p.marker-alarm i {
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    font-size: 12px;
+}

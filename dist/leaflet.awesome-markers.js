@@ -36,7 +36,9 @@
             iconType: 'font-awesome',
             hasDiagnosticIcon: false,
             diagnosticIcon: 'exclamation-triangle',
-            diagnosticColor: 'yellow'
+            diagnosticColor: 'yellow',
+            alarmCount : 0,
+            elementId: null
         },
 
         initialize: function (options) {
@@ -53,7 +55,9 @@
             if (options.alarmIcon) {
                 div.innerHTML += this._createInnerAlarm();
             }
-
+            if(options.alarmCount > 0) {
+                div.innerHTML += this._createInnerAlarmCount();
+            }
             if (options.bgPos) {
                 div.style.backgroundPosition =
                     (-options.bgPos.x) + 'px ' + (-options.bgPos.y) + 'px';
@@ -115,9 +119,14 @@
             } else {
                 iconClass = 'fa' + "-" + options.alarmIcon;
             }
-            style = "style='color: red; top: -8px; left:0; position:absolute;'";
-            return `<i ${style} class="fa  ${iconClass}"></i>`
+           // style = "style='color: red; top: -8px; right:0; position:absolute;'";
+            return `<p id="marker-alarm-icon" data-elementId="${options.elementId}" class="marker-alarm"><i class="fa  ${iconClass}"></i></p>`;
+          //  return `<i ${style} class="fa  ${iconClass}"></i>`
 
+        },
+        _createInnerAlarmCount: function (){
+            var options = this.options;
+            return `<p  id="marker-alarm-icon" data-elementId="${options.elementId}"  class="marker-alarm"> ${options.alarmCount}</p>`;
         },
         _createDiagnosticIcon: function(){
           var options = this.options, diagnosticIconClass, style;
