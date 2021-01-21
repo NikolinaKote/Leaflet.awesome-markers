@@ -56,8 +56,8 @@ Version: 1.0
     width: 23px;
     height: 23px;
     color: white;
-
 }
+
 .awesome-marker .icon-white {
     color: #fff;
 }
@@ -81,4 +81,12 @@ Version: 1.0
     font-weight: bold;
     margin: auto;
     font-size: 12px;
+}
+.awesome-marker p.marker-alarm img{
+    text-align: center;
+    margin: auto;
+    width: 20px;
+    font-size: 12px;
+    max-width: 20px !important;
+    max-height: 20px !important;
 }

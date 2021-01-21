@@ -55,7 +55,7 @@
             if (options.alarmIcon) {
                 div.innerHTML += this._createInnerAlarm();
             }
-            if(options.alarmCount > 0) {
+            if(options.alarmCount > 1) {
                 div.innerHTML += this._createInnerAlarmCount();
             }
             if (options.bgPos) {
@@ -79,6 +79,9 @@
             }
             else if(options.prefix === 'custom'){
                 return this._createCustomIcon();
+            }
+            else if(options.prefix === 'external'){
+                return this._createExternalIcon();
             }
             else {
                 return this._createInnerFontAwesome();
@@ -114,16 +117,14 @@
 
         _createInnerAlarm: function () {
             var options = this.options, iconAlarm, style, iconClass;
-            if (options.alarmIcon.slice(0, options.prefix.length + 1) === options.prefix + "-") {
-                iconClass = options.alarmIcon;
-            } else {
-                iconClass = 'fa' + "-" + options.alarmIcon;
-            }
-           // style = "style='color: red; top: -8px; right:0; position:absolute;'";
-            return `<p id="marker-alarm-icon" data-elementId="${options.elementId}" class="marker-alarm"><i class="fa  ${iconClass}"></i></p>`;
-          //  return `<i ${style} class="fa  ${iconClass}"></i>`
+            iconClass = options.alarmIcon;
 
-        },
+         //   return `<p id="marker-alarm-icon" data-elementId="${options.elementId}" class="marker-alarm"><i class="fa  ${iconClass}"></i></p>`;
+            return `<p id="marker-alarm-icon" data-elementId="${options.elementId}" class="marker-alarm">
+                    <img src="${iconClass}">
+                    </p>`;
+
+            },
         _createInnerAlarmCount: function (){
             var options = this.options;
             return `<p  id="marker-alarm-icon" data-elementId="${options.elementId}"  class="marker-alarm"> ${options.alarmCount}</p>`;
@@ -137,13 +138,17 @@
             }
             style = `style='color: ${options.diagnosticColor}; top: 18px; left:-2px; position:absolute; text-shadow: 2px 2px 2px black'`;
             return `<i ${style} class="fa  ${diagnosticIconClass}"></i>`
+          //  return `<img src="https://visualpharm.com/assets/992/Invisible-595b40b75ba036ed117d7f96.svg">`
 
         },
         _createCustomIcon: function(){
             var options = this.options;
              return `<img src='${options.icon}'>`
           },
-
+        _createExternalIcon: function(){
+            var options = this.options;
+            return `<img src='${options.icon}'>`
+        },
         _setIconStyles: function (img, name) {
             var options = this.options,
                 size = L.point(options[name === 'shadow' ? 'shadowSize' : 'iconSize']),
